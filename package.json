@@ -1,0 +1,11 @@
+{
+  "name": "remark-extract-anchors",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:montogeek/remark-extract-anchors.git",
+  "author": "Fernando Montoya <montogeek@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "unist-util-visit": "1.3.1"
+  }
+}
