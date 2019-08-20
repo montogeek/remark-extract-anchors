@@ -21,7 +21,7 @@ module.exports = function extractAnchors(options = {}) {
     if (!node.children.some(child => child.type === "link")) {
       // TODO: Default header `levels` and check it to filter the `push`ed anchors
       options.anchors.push({
-        title: node.children.length ? node.children[0].value : ""
+        title: node.children.length ? node.children[0].value : "",
         id: node.data.id
       });
     }
