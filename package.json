@@ -2,6 +2,9 @@
   "name": "remark-extract-anchors",
   "version": "1.0.0",
   "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "repository": "git@github.com:montogeek/remark-extract-anchors.git",
   "author": "Fernando Montoya <montogeek@gmail.com>",
   "license": "MIT",
