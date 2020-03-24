@@ -28,7 +28,8 @@ module.exports = function extractAnchors(options = {}) {
       if (node.depth > levels) return
       options.anchors.push({
         title: node.children.length ? node.children[0].value : "",
-        id: node.data.id
+        id: node.data.id,
+        level: node.depth
       });
     }
   }
