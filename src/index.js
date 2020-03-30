@@ -1,4 +1,5 @@
 const visit = require("unist-util-visit");
+const reduceChildren = require('./reduceChildren');
 
 /**
  * A remark plugin to extract anchors markdown headers
@@ -7,7 +8,7 @@ const visit = require("unist-util-visit");
  * @return {function}         - ...
  */
 module.exports = function extractAnchors(options = {}) {
-  let {anchors, levels} = options;
+  let {anchors, levels = 6} = options;
 
   if (!Array.isArray(anchors)) {
     throw new Error("Missing or malformed `anchors` in options.");
@@ -23,12 +24,16 @@ module.exports = function extractAnchors(options = {}) {
     visit(ast, "heading", visitor);
   };
 
+  function getTitle(children) {
+    return reduceChildren(children).join('')
+  }
+
   function visitor(node) {
     if (!node.children.some(child => child.type === "link")) {
       if (node.depth > levels) return
       options.anchors.push({
-        title: node.children.length ? node.children[0].value : "",
-        id: node.data.id,
+        title: getTitle(node.children),
+        id: node.data && node.data.id,
         level: node.depth
       });
     }
